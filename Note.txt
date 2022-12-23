@@ -1,0 +1,27 @@
+第一步：$ npm install && npm run build
+    需要在 package.json 中的 script 部分去除 CI= ，否则会报错。
+
+第二步：将 build folder drag & drop 到 netlify。
+
+第三步：可以 re-set 一个 site name.
+
+第四步：必须注意，netlify 可以处理 react-router，
+    但必须要求 build folder 中有一个 "_redirects" 文件，内容为：
+    /*    /index.html   200
+
+第五步：如果 project 发生了任何更改，就需要新产生一个 build，然后再上传。这样较为不便。
+    方便的方法是使用 gitHub，用 git repo 将 web 存储在远端。
+
+    $ git init
+    $ git add .
+    $ git commit -m "initial commit"
+
+    在 hyper 中分别注入:
+    $ git remote add origin https://github.com/zhangquan19970609/cocktail-browsing-1.git
+    $ git branch -M main
+    $ git push -u origin main
+
+    建立好 git repo 之后，在 netlify 中建立新的 project，选择从 gitHub 中 import，并 deploy site.
+
+第六步：此时对页面作出修改，例如将 页面 body 的 background-color 更改为红色，
+    并在 VS Code 里的 Source Control （从上到下第三个）中 commit change & push.
